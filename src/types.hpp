@@ -15,7 +15,7 @@
 #endif
 //
 
-namespace dfsph_viewer
+namespace dans::app::dfsph_viewer
 {
 using usize = std::size_t;
 using isize = std::ptrdiff_t;
@@ -63,6 +63,6 @@ static_assert(sizeof(i64) == 8zu);
 static_assert(sizeof(f32) == 4zu);
 static_assert(sizeof(f64) == 8zu);
 
-}  // namespace dfsph_viewer
+}  // namespace dans::app::dfsph_viewer
 
 #endif  // DFSPH_VIEWER_SRC_TYPES_HPP

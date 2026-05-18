@@ -7,5 +7,5 @@
 
 auto main(int argc, char** argv) -> int
 {
-    return run_dfsph_viewer_app(argc, argv);
+    return dans::app::dfsph_viewer::run_dfsph_viewer_app(argc, argv);
 }

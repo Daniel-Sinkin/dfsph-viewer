@@ -4075,7 +4075,7 @@ class DfsphPlaybackApp
 };
 }  // namespace
 
-auto run_dfsph_viewer_app(int argc, char** argv) -> int
+auto dans::app::dfsph_viewer::run_dfsph_viewer_app(int argc, char** argv) -> int
 {
     try
     {

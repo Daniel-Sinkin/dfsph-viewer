@@ -6,4 +6,7 @@
 // Standard Library
 //
 
+namespace dans::app::dfsph_viewer
+{
 [[nodiscard]] auto run_dfsph_viewer_app(int argc, char** argv) -> int;
+}  // namespace dans::app::dfsph_viewer

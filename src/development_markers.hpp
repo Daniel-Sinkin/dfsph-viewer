@@ -40,13 +40,13 @@
 // Only use this on the auto for functions when using trailing return
 #define def auto
 
-namespace dfsph_viewer
+namespace dans::app::dfsph_viewer
 {
 template <typename T>
 [[nodiscard]] constexpr def copy(const T& value) -> std::remove_cvref_t<T>
 {
     return value;
 }
-}  // namespace dfsph_viewer
+}  // namespace dans::app::dfsph_viewer
 
 #endif  // DFSPH_VIEWER_SRC_DEVELOPMENT_MARKERS_HPP

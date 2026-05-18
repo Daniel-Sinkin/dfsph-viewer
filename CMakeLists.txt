@@ -40,6 +40,10 @@ target_include_directories(dfsph_viewer PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+target_precompile_headers(dfsph_viewer PRIVATE
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/pch.hpp
+)
+
 target_compile_definitions(dfsph_viewer PRIVATE
   DS_VK_ASSET_DIR="${CMAKE_CURRENT_SOURCE_DIR}/local/assets"
 )

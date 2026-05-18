@@ -30,7 +30,15 @@ else()
   set(DFSPH_ZLIB_LIBRARY ZLIB::ZLIB)
 endif()
 
-add_subdirectory(external/ds-vk)
+include(FetchContent)
+
+set(DS_VK_GIT_REPOSITORY "git@github.com:Daniel-Sinkin/ds-vk.git" CACHE STRING "ds-vk Git repository")
+set(DS_VK_GIT_TAG "62a43e99905177aef79099308976f70a2bd76a54" CACHE STRING "Frozen ds-vk commit")
+FetchContent_Declare(ds_vk
+  GIT_REPOSITORY "${DS_VK_GIT_REPOSITORY}"
+  GIT_TAG "${DS_VK_GIT_TAG}"
+)
+FetchContent_MakeAvailable(ds_vk)
 
 add_executable(dfsph_viewer
   app/main.cpp

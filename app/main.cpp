@@ -1,9 +1,6 @@
-#include <print>
+#include "dfsph_viewer_app.hpp"
 
-auto main() -> int
+auto main(int argc, char** argv) -> int
 {
-    std::println(
-        "Hello, Template! Don't forget to adjust the project name in the CMakeLists.txt "
-        "and the namespace in src/*.cpp files"
-    );
+    return run_dfsph_viewer_app(argc, argv);
 }

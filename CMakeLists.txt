@@ -11,7 +11,7 @@ if(APPLE AND NOT DEFINED CMAKE_C_COMPILER AND NOT DEFINED CMAKE_CXX_COMPILER)
   endforeach()
 endif()
 
-project(ds_template LANGUAGES C CXX)
+project(dfsph_viewer LANGUAGES C CXX)
 
 if(NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Build type" FORCE)
@@ -22,50 +22,31 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-add_library(ds_template_warnings INTERFACE)
-target_compile_options(ds_template_warnings INTERFACE
-  $<$<CXX_COMPILER_ID:Clang,AppleClang,GNU>:
-    -Wall
-    -Wextra
-    -Wpedantic
-    -Werror
-    -Wshadow
-    -Wconversion
-    -Wfloat-conversion
-    -Wsign-conversion
-    -Wcast-qual
-    -Wcast-align
-    -Wformat=2
-    -Wundef
-    -Wnull-dereference
-    -Wnon-virtual-dtor
-    -Woverloaded-virtual
-    -Wold-style-cast
-    -Wzero-as-null-pointer-constant
-    -Wdouble-promotion
-    -Wimplicit-fallthrough
-    -Wreturn-type>
-  $<$<CXX_COMPILER_ID:Clang,AppleClang>:
-    -Wconditional-uninitialized
-    -Wextra-semi
-    -Wimplicit-int-conversion
-    -Wimplicit-int-float-conversion
-    -Wnewline-eof
-    -Wshorten-64-to-32
-    -Wswitch-enum
-    -Wunreachable-code>
-  $<$<CXX_COMPILER_ID:GNU>:
-    -Wduplicated-branches
-    -Wduplicated-cond
-    -Wlogical-op
-    -Wsign-compare
-    -Wuseless-cast>
+if(APPLE)
+  find_library(DFSPH_ZLIB_LIBRARY z REQUIRED)
+else()
+  find_package(ZLIB REQUIRED)
+  set(DFSPH_ZLIB_LIBRARY ZLIB::ZLIB)
+endif()
+
+add_subdirectory(external/ds-vk)
+
+add_executable(dfsph_viewer
+  app/main.cpp
+  src/dfsph_viewer_app.cpp
 )
 
-add_executable(ds_template
-  app/main.cpp
-)
-target_include_directories(ds_template PRIVATE
+target_include_directories(dfsph_viewer PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
-target_link_libraries(ds_template PRIVATE ds_template_warnings)
+
+target_compile_definitions(dfsph_viewer PRIVATE
+  DS_VK_ASSET_DIR="${CMAKE_CURRENT_SOURCE_DIR}/local/assets"
+)
+
+target_link_libraries(dfsph_viewer PRIVATE
+  ds_vk
+  ds_vk_viz
+  ${DFSPH_ZLIB_LIBRARY}
+  ds_vk_warnings
+)

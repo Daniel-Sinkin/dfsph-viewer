@@ -4,12 +4,16 @@
 #define DFSPH_VIEWER_SRC_TYPES_HPP
 #pragma once
 
+// Internals
+// Externals
+// Standard Library
 #include <cstddef>
 #include <cstdint>
 #include <type_traits>
 #if defined(__has_include) and __has_include(<stdfloat>)
 #    include <stdfloat>
 #endif
+//
 
 namespace dfsph_viewer
 {

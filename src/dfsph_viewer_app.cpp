@@ -1,10 +1,17 @@
 // src/dfsph_viewer_app.cpp
+// Header
+#include "dfsph_viewer_app.hpp"
+// Internals
+// Externals
 #include "ds_vk/math.hpp"
 #include "ds_vk/mesh.hpp"
 #include "ds_vk/plugins/viz.hpp"
 #include "ds_vk/runtime.hpp"
 #include "ds_vk/types.hpp"
-
+#include <glm/gtc/constants.hpp>
+#include <imgui.h>
+#include <zlib.h>
+// Standard Library
 #include <algorithm>
 #include <array>
 #include <atomic>
@@ -16,8 +23,6 @@
 #include <filesystem>
 #include <format>
 #include <fstream>
-#include <glm/gtc/constants.hpp>
-#include <imgui.h>
 #include <iostream>
 #include <limits>
 #include <memory>
@@ -33,7 +38,7 @@
 #include <unordered_map>
 #include <utility>
 #include <vector>
-#include <zlib.h>
+//
 
 namespace
 {

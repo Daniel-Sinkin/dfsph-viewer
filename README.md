@@ -1,3 +1,4 @@
+<!-- README.md -->
 # DFSPH Viewer
 
 Standalone DFSPH playback viewer using `ds-vk` as a git submodule in `external/ds-vk`.

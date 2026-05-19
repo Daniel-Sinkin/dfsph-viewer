@@ -243,6 +243,22 @@ struct DfsphSceneConfig
                 },
         },
         DfsphSceneConfig{
+            .id = "dambreak_150k_long_dfsph_v1",
+            .label = "Dam Break 150k (Long)",
+            .vtk_dir = "dfsph/dambreak_150k_long_dfsph_v1/vtk",
+            .surface_dir = "dfsph/dambreak_150k_long_dfsph_v1/surface",
+            .bounds = {.min = {-3.5f, -2.2f, -0.05f}, .max = {5.3f, 3.5f, 3.2f}},
+            .particle_radius = 0.025f,
+            .support_radius = 0.100f,
+            .camera =
+                {
+                    .pivot = {0.75f, 0.45f, 1.45f},
+                    .distance = 10.0f,
+                    .yaw = glm::radians(42.0f),
+                    .pitch = glm::radians(24.0f),
+                },
+        },
+        DfsphSceneConfig{
             .id = "twoway_rigidbody_50k_4bodies_dfsph_v1",
             .label = "Two-Way Rigid Bodies 50k",
             .vtk_dir = "dfsph/twoway_rigidbody_50k_4bodies_dfsph_v1/vtk",
